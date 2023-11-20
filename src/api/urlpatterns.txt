@@ -1,0 +1,26 @@
+
+base
+127.0.0.1:8000
+
+auth
+/users/ [post]
+/users/me/ [get]
+/token/login/ (Token Based Authentication) [post, username and password required]
+/token/logout/ (Token Based Authentication) [get, auth token in headers required]
+/users/confirm/
+/users/resend_activation/
+/users/set_password/
+/users/reset_password/
+/users/reset_password_confirm/
+/users/set_username/
+/users/reset_username/
+/users/reset_username_confirm/
+
+tasks(login required)
+prefix /api/v1/
+
+/tasks/ [get, list]
+/tasks/ [post, to create]
+/tasks/<pk>/ [get, update, delete]
+/tasks/<pk>/complete/ [post]
+/tasks/<pk>/approve/ [post]
