@@ -18,6 +18,15 @@
     font-weight: 600;
 }
 
+.main-page {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.main-page>div {
+    min-width: 90vw;
+}
+
 .logo {
     color: white !important;
 }

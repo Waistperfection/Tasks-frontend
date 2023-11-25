@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect } from "react";
-import { serviceMe, serviceLogin, serviceLogout } from "../api/authservice";
+import { createContext, useMemo, useState } from "react";
+import { serviceLogin, serviceLogout, serviceMe } from "../api/authservice";
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
       else {return null}
     }
   );
+  const is_master = useMemo(() => (user)? user.is_master : false, [user])
   // try to get user with localStorage token onload or set null
   // useEffect(() => {
   //       setLoading(true);
@@ -46,7 +47,7 @@ export const AuthProvider = ({ children }) => {
       .then(() => callback());
   };
 
-  const value = { user, signIn, signOut };
+  const value = { user, signIn, signOut, is_master };
 
   return(
     <>

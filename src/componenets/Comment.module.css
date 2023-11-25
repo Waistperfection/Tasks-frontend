@@ -1,0 +1,22 @@
+.senderContainer {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.workerImg {
+    /* display: inline-block; */
+    background-image: url("https://romancestudies.unc.edu/wp-content/uploads/sites/1320/2022/07/avatar.png");
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    /* border-radius: 50%; */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.senerName {
+    display: inline;
+}

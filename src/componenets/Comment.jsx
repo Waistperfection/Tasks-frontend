@@ -2,11 +2,13 @@ import React from "react";
 import { useState } from "react";
 import Comments from "./Comments";
 import { addComment } from "../api/taskservice";
+import cls from "./Comment.module.css";
 
-function Comment({ children }) {
+function Comment({ children, workers }) {
   const [comment, setComment] = useState(children);
   const [visible, setVisible] = useState(true);
   const [input, setInput] = useState("");
+  const date = new Date(comment.added);
 
   const handleAdd = (task, body, id) => {
     addComment(task, body, id).then((data) => {
@@ -24,7 +26,8 @@ function Comment({ children }) {
   return (
     <li
       style={{
-        paddingLeft: "10px",
+        margin: "10px 5px 5px 0",
+        paddingLeft: "20px",
         borderLeft: "1px solid black",
         listStyle: "none",
       }}
@@ -36,12 +39,22 @@ function Comment({ children }) {
           alignItems: "flex-start",
         }}
       >
-        <div>
-          id: {comment.id}, sender: {comment.sender},
+        <div className={cls.senderContainer}>
+          <div className={cls.workerImg}></div>
+          <div>
+            <h4 className={cls.senderName}>
+
+            sender:{" "}
+            {
+              workers?.filter((worker) => worker.id == comment.sender)[0]
+              ?.username
+            }{" "}
+            </h4>
+            added: {`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}
+          </div>
         </div>
         <div>
-          <p>body: {comment.body}</p>
-          <p>added: {comment.added}</p>
+          <p>{comment.body}</p>
         </div>
         <div>
           <button onClick={() => setVisible(!visible)}>reply</button>
@@ -58,7 +71,9 @@ function Comment({ children }) {
           </p>
         </div>
       </div>
-      {comment.subcomments ? <Comments comments={comment.subcomments} /> : null}
+      {comment.subcomments ? (
+        <Comments comments={comment.subcomments} workers={workers} />
+      ) : null}
     </li>
   );
 }

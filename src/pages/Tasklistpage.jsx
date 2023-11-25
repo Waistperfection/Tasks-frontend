@@ -1,23 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { getTaskList } from "../api/taskservice";
-import { Link } from "react-router-dom";
+import Groupheader from "../componenets/Groupheader";
+import TaskCard from "../componenets/TaskCard";
+import AddTaskPage from "./AddTaskPage";
+import cls from "./Tasklistpage.module.css";
 
 function Tasklistpage() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([{}]);
+  const addFormRef = useRef(null);
   useEffect(() => {
-    getTaskList().then(data => setTasks(data));
-  },[]);
+    getTaskList().then((data) => setTasks(data));
+  }, []);
+
+  const scrollHandler = (id) => {
+    addFormRef.current.scrollIntoView();
+  }
+
+   const addNewTask = (task) => {setTasks([...tasks, task])};
   return (
     <>
-      <div>Tasklistpage</div>
-     <div className="tasks">
-        {tasks.map(task => (
-          <div className="task" key={task.id}>
-            <h3>{task.title}</h3>
-            <p style={{paddingLeft: "10px"}}>{task.content} <Link to={`${task.id}`}>подробнее</Link></p>            
-          </div>
+      <h3>Tasklistpage</h3>
+      <div className={cls.taskListWrapper}>
+        {tasks.map((task, indx, arr) => (
+          <>
+            {indx === 0 ||
+            arr[indx - 1].workgroup_name !== task.workgroup_name ? (
+              <Groupheader
+                workgroup_name={task.workgroup_name}
+                workgroup_id={task.workgroup_id}
+                clickHandler={scrollHandler}
+              />
+            ) : (
+              ""
+            )}
+            <>
+            <TaskCard task={task} key={task.id} />
+            </>
+          </>
         ))}
-     </div>
+      </div>
+      <div ref={addFormRef}>
+      <AddTaskPage callback={addNewTask}/>
+      </div>
     </>
   );
 }

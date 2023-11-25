@@ -1,0 +1,23 @@
+.taskListWrapper {
+    width: 90vw;
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* justify-items: stretch; */
+    justify-content: center;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .taskListWrapper {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+}
+
+@media (max-width: 576px) {
+    .taskListWrapper {
+        grid-template-columns: 1fr;
+    }
+
+}

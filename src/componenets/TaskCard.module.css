@@ -1,0 +1,102 @@
+.task {
+  background-color: rgb(221, 221, 221);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.headerContainer {
+  padding: 5px 10px 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(99, 176, 176);
+}
+
+.header {
+  font-size: 1.3em;
+}
+
+.headerButton {
+  width: 30px;
+  height: 30px;
+  /* align-self: center; */
+  background-color: rgb(141, 215, 141);
+  border-radius: 50%;
+}
+
+
+.dateCreated {
+  font-size: .8em;
+  font-style: italic;
+  padding: 5px 10px 0 10px;
+}
+
+.contentContainer {
+  padding: 5px 10px 5px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.content {
+  display: block;
+  width: calc(100%);
+  text-overflow: ellipsis;
+}
+
+.workersContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 10px;
+  border-top: solid rgb(99, 176, 176);
+  border-bottom: solid rgb(99, 176, 176);
+  min-width: 100%;
+  height: 40px;
+}
+
+.worker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #4a7f91;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  margin-left: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.worker:nth-child(1) {
+  margin: 0;
+
+}
+
+.btnGroupContainer {
+  display: flex;
+  justify-content: flex-start;
+  /* align-content: center; */
+  padding: 5px 10px 10px 10px;
+}
+
+.btn:visited, btn:hover, btn:active, btn:focus {
+  color: initual !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+.btn {
+  background-color: rgb(141, 215, 141);
+  color: black;
+  text-decoration: none !important;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 15px;
+
+}
+

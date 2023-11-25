@@ -16,8 +16,12 @@ function Layout() {
 
         </div>
       </header>
+      <main className="main-page">
+        <div>
       <h3>{user?.username || 'Davai zahodi'}</h3>
       <Outlet />
+        </div>
+      </main>
       <footer>hello footer</footer>
     </>
   );
