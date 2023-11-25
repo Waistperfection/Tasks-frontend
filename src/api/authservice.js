@@ -11,12 +11,11 @@ authService.interceptors.response.use(
       console.log("unauthorized");
       localStorage.removeItem("token");
       return false;
-    }
-    else if (error.response.status === 400) {
+    } else if (error.response.status === 400) {
       console.dir(error.response);
       return false;
     }
-       return error;
+    return error;
   }
 );
 
@@ -37,22 +36,8 @@ export const serviceLogout = async () => {
     { token },
     { headers: { Authorization: `token ${localStorage.getItem("token")}` } }
   );
-  // .catch((e) => {
-  //   console.log("catched error", e);
-  //   if (e.request && e.request.status == 401) {
-  //     console.log("401");
-
-  //     console.log(e);
-  //   } else {
-  //     console.log("not 401");
-
-  //     throw e;
-  //   }
-  // });
   localStorage.removeItem("token");
-  console.log("removetoken");
   localStorage.removeItem("user");
-  console.log("remove user");
 };
 
 // function to get user data
@@ -70,7 +55,6 @@ export const serviceRegistration = async (username, password) => {
   let output;
   await authService
     .post("users/", { username: username, password: password })
-    .then((request) => console.log(request.status, request.data))
     .then(() => (output = true))
     .catch((e) => {
       console.dir(e);

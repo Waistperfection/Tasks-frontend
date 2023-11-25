@@ -3,13 +3,14 @@ import { API_URL } from "./settings";
 
 export const taskService = axios.create({ baseURL: API_URL + "api/v1" });
 
-taskService.interceptors.request.use(
-  (res)=>{
-    console.log(res.data);
-    return res;
-  },
-  (err)=>err
-)
+// useful for debug
+// taskService.interceptors.request.use(
+//   (res)=>{
+//     return res;
+//   },
+//   (err)=>err
+// )
+
 taskService.interceptors.response.use(
   (res) => res,
   (error) => {
@@ -23,7 +24,7 @@ taskService.interceptors.response.use(
           alert("У вас нет прав доступа обратитесь к админестратору");
           break;
         case 404:
-          alert("Вы запросили доступ к несуществующему ресрсу");
+          alert("Вы запросили доступ к несуществующему ресурсу");
           break;
         case 500:
           alert("Ошибка сервера, попробуйте позже");
@@ -47,7 +48,6 @@ export const getTaskList = async () => {
   const response = await taskService.get("tasks", {
     headers: { Authorization: `token ${token}` },
   });
-  console.log(response);
   return response.data;
 };
 
@@ -56,7 +56,6 @@ export const getTaskDetail = async (id) => {
   const response = await taskService.get(`tasks/${id}/`, {
     headers: { Authorization: `token ${token}` },
   });
-  console.log(response);
   return response.data;
 };
 
@@ -72,7 +71,6 @@ export const addComment = async (taskId, commentBody, answerTo = null) => {
       headers: { Authorization: `token ${token}` },
     }
   );
-  console.log(response);
   return response.data;
 };
 
@@ -81,16 +79,13 @@ export const getWorkgroupList = async () => {
   const response = await taskService.get("workgroups", {
     headers: { Authorization: `token ${token}` },
   });
-  console.log(response);
   return response.data;
 };
 
 export const createNewTask = async (task) => {
-  console.log(task);
   const token = getTokenOrExseption();
   const response = await taskService.post("tasks/", task, {
     headers: { Authorization: `token ${token}` },
   });
-  console.log(response);
   return response.data;
 };

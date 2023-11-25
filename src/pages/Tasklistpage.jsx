@@ -8,15 +8,19 @@ import cls from "./Tasklistpage.module.css";
 function Tasklistpage() {
   const [tasks, setTasks] = useState([{}]);
   const addFormRef = useRef(null);
+
   useEffect(() => {
     getTaskList().then((data) => setTasks(data));
   }, []);
 
   const scrollHandler = (id) => {
     addFormRef.current.scrollIntoView();
-  }
+  };
 
-   const addNewTask = (task) => {setTasks([...tasks, task])};
+  const addNewTask = (task) => {
+    setTasks([...tasks, task]);
+  };
+
   return (
     <>
       <h3>Tasklistpage</h3>
@@ -34,13 +38,13 @@ function Tasklistpage() {
               ""
             )}
             <>
-            <TaskCard task={task} key={task.id} />
+              <TaskCard task={task} key={task.id} />
             </>
           </>
         ))}
       </div>
       <div ref={addFormRef}>
-      <AddTaskPage callback={addNewTask}/>
+        <AddTaskPage callback={addNewTask} />
       </div>
     </>
   );

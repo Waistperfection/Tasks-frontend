@@ -58,11 +58,11 @@ function AddTaskPage({ callback }) {
             <select
               name="workgroup"
               id="workgroup"
-              placeholder="выбери группу"
+              // placeholder="выбери группу"
               style={{ width: "100px" }}
               onChange={(e) => setWorkgroup(parseInt(e.target.value))}
             >
-              <option key={100000000} value={null} selected disabled>
+              <option key={100000000} value={0}  selected disabled>
                 default
               </option>
               {workgroups.map((workgroup) => (

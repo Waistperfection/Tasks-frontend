@@ -12,7 +12,6 @@ function Comment({ children, workers }) {
 
   const handleAdd = (task, body, id) => {
     addComment(task, body, id).then((data) => {
-      console.log(data);
       let newComment = { ...comment };
       let subcomments = comment.subcomments
         ? [...comment.subcomments, data]
