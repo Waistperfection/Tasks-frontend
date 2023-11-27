@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getTaskDetail } from "../api/taskservice";
+import { addComment, getTaskDetail } from "../api/taskservice";
 import Comments from "../componenets/Comments";
 import cls from "./Taskdetailpage.module.css";
 
 function Taskdetailpage() {
+  window.scrollTo(0, 0);
   const { id } = useParams();
   const [task, setTask] = useState({});
+  const [newComment, setNewComment] = useState("");
   useEffect(() => {
     getTaskDetail(id).then((data) => setTask(data));
   }, [id]);
@@ -25,20 +27,34 @@ function Taskdetailpage() {
           <h3>workers</h3>
           {task.workers?.map((worker) => (
             <>
-            <div>
-              <div className={cls.worker}>
-                <div className={cls.workerImg}></div>
-                <h4 className={cls.workerName}>
-                {worker.username}
-                </h4>
+              <div>
+                <div className={cls.worker}>
+                  <div className={cls.workerImg}></div>
+                  <h4 className={cls.workerName}>{worker.username}</h4>
+                </div>
               </div>
-            </div>
             </>
           ))}
         </div>
         <div className={cls.commentsContainer}>
           <h3>comments</h3>
-          <div className={cls.addComment}><input type="text" name="" id="" className={cls.textInput} placeholder="Add comment"/><div className={cls.addCommentBtn}>reply</div></div>
+          <div className={cls.addComment}>
+            <input
+              type="text"
+              name=""
+              id=""
+              className={cls.textInput}
+              placeholder="Add comment"
+              value={newComment}
+              onInput={(e) => setNewComment(e.target.value)}
+            />
+            <div
+              className={cls.addCommentBtn}
+              onClick={(e) => addComment(task.id, newComment)}
+            >
+              reply
+            </div>
+          </div>
           <div style={{ fontSize: ".8em" }}>
             {task?.comments?.length > 0 ? (
               <Comments comments={task.comments} workers={task.workers} />

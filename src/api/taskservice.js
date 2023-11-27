@@ -3,19 +3,12 @@ import { API_URL } from "./settings";
 
 export const taskService = axios.create({ baseURL: API_URL + "api/v1" });
 
-// useful for debug
-// taskService.interceptors.request.use(
-//   (res)=>{
-//     return res;
-//   },
-//   (err)=>err
-// )
-
 taskService.interceptors.response.use(
   (res) => res,
   (error) => {
     console.log(error);
     if (axios.isAxiosError(error)) {
+      console.log(error.response, error.response?.status);
       switch (error.response.status) {
         case 401:
           alert("Проблемы с авторизацией, перелогинтесь");
@@ -43,6 +36,7 @@ function getTokenOrExseption() {
   }
   return token;
 }
+
 export const getTaskList = async () => {
   const token = getTokenOrExseption();
   const response = await taskService.get("tasks", {
@@ -71,7 +65,8 @@ export const addComment = async (taskId, commentBody, answerTo = null) => {
       headers: { Authorization: `token ${token}` },
     }
   );
-  return response.data;
+  // TODO update this method if it returns undefinded it will be added to comment and broke workflow (think same about other methods) mb return false and catch this in component
+  return response?.data;
 };
 
 export const getWorkgroupList = async () => {

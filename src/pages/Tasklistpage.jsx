@@ -8,12 +8,14 @@ import cls from "./Tasklistpage.module.css";
 function Tasklistpage() {
   const [tasks, setTasks] = useState([{}]);
   const addFormRef = useRef(null);
+  const [addWorkgroupDefault, setAddWorkgroupDefault] = useState(0);
 
   useEffect(() => {
     getTaskList().then((data) => setTasks(data));
   }, []);
 
   const scrollHandler = (id) => {
+    setAddWorkgroupDefault(id);
     addFormRef.current.scrollIntoView();
   };
 
@@ -43,8 +45,8 @@ function Tasklistpage() {
           </>
         ))}
       </div>
-      <div ref={addFormRef}>
-        <AddTaskPage callback={addNewTask} />
+      <div ref={addFormRef} className={cls.addTaskWrapper}>
+        <AddTaskPage callback={addNewTask} sel={addWorkgroupDefault} />
       </div>
     </>
   );

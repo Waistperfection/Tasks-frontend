@@ -2,6 +2,7 @@ import axios from "axios";
 import { API_URL } from "./settings";
 
 export const authService = axios.create({ baseURL: API_URL + "auth/" });
+
 authService.interceptors.response.use(
   (response) => {
     return response;
