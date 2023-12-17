@@ -1,20 +1,11 @@
-.flexColumnWrapper {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.task {
-    width: 100%;
+.workgroupCard {
     background-color: rgb(221, 221, 221);
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.taskHeaderContainer {
+.workgroupHeaderContainer {
     padding: 5px 10px 5px 10px;
     display: flex;
     justify-content: space-between;
@@ -29,6 +20,7 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 5px;
+    min-height: 25px;
 }
 
 .workersContainer {

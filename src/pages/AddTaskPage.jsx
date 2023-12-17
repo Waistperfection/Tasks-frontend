@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { createNewTask, getWorkgroupList } from "../api/taskservice";
 import cls from "./AddTaskPage.module.css";
+import { AuthContext } from "../hoc/AuthProvider";
 
 function AddTaskPage({ callback, sel }) {
+  const {user} = useContext(AuthContext);
   const [workgroups, setWorkgroups] = useState([{}]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -12,15 +14,14 @@ function AddTaskPage({ callback, sel }) {
   useEffect(() => {
     getWorkgroupList().then((data) => setWorkgroups(data));
   }, []);
-
+  
   useEffect(
     () =>
-      setOptionWorkers(
-        workgroups.filter((wg) => wg["id"] == workgroup)[0]?.workers || []
+    setOptionWorkers(
+      workgroups.filter((wg) => wg["id"] == workgroup)[0]?.workers || []
       ),
-    [workgroups, workgroup]
-  );
-
+      [workgroups, workgroup]
+      );
   return (
     <>
       <div className={cls.addTaskContainer}>

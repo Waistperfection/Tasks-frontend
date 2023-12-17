@@ -1,6 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../hoc/AuthProvider";
+import { TextInput } from "../componenets/TextInput/TextInput";
+import cls from "./Loginpage.module.css";
+import Button from "../componenets/Button/Button";
 
 function Loginpage() {
   const { user, signIn, signOut } = useContext(AuthContext);
@@ -15,33 +18,35 @@ function Loginpage() {
   }
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        signIn(username, password);
-      }
-    }
-    className="auth-form"
-    >
-      <label htmlFor="">
-        username
-        <input
+    <div className={cls.authCard}>
+      <div className={cls.authHeader}>Авторизация</div>
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          signIn(username, password);
+          cleanForm();
+        }}
+        className={cls.authForm}
+      >
+        <p style={{ padding: "5px 0 0 0" }}>{""}</p>
+
+        <TextInput
+          label="LOGIN"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           autoFocus
         />
-      </label>
-      <label htmlFor="">
-        password
-        <input
+        <TextInput
+          label="PASSWORD"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </label>
-      <input type="submit" />
-    </form>
+        <Button>Авторизация</Button>
+      </form>
+    </div>
   );
 }
 

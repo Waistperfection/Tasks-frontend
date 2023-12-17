@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import Comments from "./Comments";
-import { addComment } from "../api/taskservice";
+import { addComment } from "../../api/taskservice";
 import cls from "./Comment.module.css";
 
 function Comment({ children, workers }) {
   const [comment, setComment] = useState(children);
   const [visible, setVisible] = useState(true);
   const [input, setInput] = useState("");
-  const date = new Date(comment.added);
+  // const date = new Date(comment.added);
 
   const handleAdd = (task, body, id) => {
     addComment(task, body, id).then((data) => {
@@ -25,8 +25,9 @@ function Comment({ children, workers }) {
   return (
     <li
       style={{
-        margin: "10px 5px 5px 0",
-        paddingLeft: "20px",
+        // margin: "10px 5px 5px 0",
+        // paddingLeft: "5px",
+        padding: "10px 5px 5px 5px",
         borderLeft: "1px solid black",
         listStyle: "none",
       }}
@@ -42,14 +43,14 @@ function Comment({ children, workers }) {
           <div className={cls.workerImg}></div>
           <div>
             <h4 className={cls.senderName}>
-
-            sender:{" "}
-            {
-              workers?.filter((worker) => worker.id == comment.sender)[0]
-              ?.username
-            }{" "}
+              sender:{" "}
+              {
+                workers?.filter((worker) => worker.id == comment.sender)[0]
+                  ?.username
+              }{" "}
             </h4>
-            added: {`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}
+            {/* added: {`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`} */}
+            added: {comment.added}
           </div>
         </div>
         <div>

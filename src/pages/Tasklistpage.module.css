@@ -1,3 +1,8 @@
+.taskListContainer {
+    display: flex;
+    flex-direction: column;
+    
+}
 .taskListWrapper {
     width: 90vw;
     margin: 10px 0;
