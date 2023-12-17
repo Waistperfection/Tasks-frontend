@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { serviceRegistration } from "../api/authservice";
+import { TextInput } from "../componenets/TextInput/TextInput";
+import cls from "./Registrationpage.module.css";
+import Button from "../componenets/Button/Button";
 
 function Registrationpage() {
   const [username, setUsername] = useState("");
@@ -26,38 +29,35 @@ function Registrationpage() {
   };
   return (
     <>
-      <form onSubmit={handleSubmit} className="auth-form">
-        <p>{formErrors}</p>
-        <label htmlFor="username">
-          username
-          <input
+      <div className={cls.registrationCard}>
+        <div className={cls.registrationHeader}>Регистрация нового пользователя</div>
+        <form onSubmit={handleSubmit} className={cls.registrationForm}>
+          <p style={{padding: "10px 0 0 0"}}>{formErrors}</p>
+          <TextInput
+            label="Имя пользователя"
             autoFocus
             type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </label>
-        <label htmlFor="confirmPassword">
-          confirmPassword
-          <input
-            type="text"
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </label>
-        <label htmlFor="password">
-          password
-          <input
-            type="text"
+          <TextInput
+            label="Пароль"
+            type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </label>
-        <input type="submit" value="submit" />
-      </form>
+
+          <TextInput
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <Button>Регистрация</Button>
+        </form>
+      </div>
     </>
   );
 }

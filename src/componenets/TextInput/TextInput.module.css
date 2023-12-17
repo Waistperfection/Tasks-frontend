@@ -1,0 +1,78 @@
+.formInput {
+    padding: 5px 0;
+    position: relative;
+    width: 250px;
+    display: flex;
+    font-size: 1em;
+    align-items: flex-start;
+    transition: all .5s;
+}
+
+.formInput {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.textInput {
+    background-color: inherit;
+    width: 100%;
+    padding: 5px 10px;
+    /* border: 1px solid #848282; */
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: .8em; 
+    overflow: hidden;
+    border: 1px solid rgba(99, 176, 176, 0.379);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+    
+}
+.textInput {
+    grid-column: 1 / -1;
+    grid-row: 1;
+}
+
+.inlineBtn {
+    /* position: absolute; */
+    /* right: 0; */
+    font-size: .8em;
+    grid-column: -2 / -1;
+    grid-row: 1;
+    padding: 5px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid rgba(99, 176, 176, 0.379);
+    background-color: rgb(99, 176, 176);
+}
+
+
+
+.inlineBtn:hover,
+.inlineBtn:focus,
+.inlineBtn:focus-visible {
+    outline: none;
+    background-color: rgba(99, 176, 176, 0.775);
+}
+
+.inlineBtn:active {
+    background-color: rgba(99, 176, 176, 0.379);
+}
+.inputLabel {
+    position: absolute;
+    left: 0;
+    margin: 10px 15px;
+    font-size: .8em;
+    background-color: rgb(221, 221, 221);
+    transition: all .3s;
+
+}
+.formInput .textInput:focus,
+.formInput .textInput:valid {
+    border: 1px solid rgb(99, 176, 176);
+}
+.formInput .textInput:focus ~ label,
+.formInput .textInput:valid ~ label {
+    font-size: .7em;
+    transform: translateY(-1.2em);
+    color: rgb(99, 176, 176);
+}

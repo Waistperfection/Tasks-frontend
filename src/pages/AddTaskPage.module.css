@@ -1,7 +1,7 @@
 .addTaskContainer {
   width: min(100%, 500px);
   background-color: rgb(221, 221, 221);
-  border-radius: 15px;
+  border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
@@ -44,7 +44,7 @@ textarea,
 select {
   padding: 10px 10px;
   display: block;
-  border-radius: 15px;
+  border-radius: 5px;
   border: none;
   width: 100%;
 

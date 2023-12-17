@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+:root {
+  --ui-font:  'Roboto', sans-serif;
+  
+  
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,4 +23,22 @@ code {
 
 input:focus, a:focus, select:focus, textarea:focus {
   outline: none;
+}
+
+#root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+@media (max-width: 768px) {
+  #root {
+      font-size: 1em;
+  }
+}
+
+@media (max-width: 576px) {
+  #root {
+      font-size: .8em;
+  }
 }

@@ -1,0 +1,57 @@
+
+    /* border: 1px solid rgba(99, 176, 176, 0.379); */
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23); */
+.btn {
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 4px;
+    min-width: 64px;
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(99, 176, 176, 0.379);
+    background-color: rgb(99, 176, 176);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    letter-spacing: .02857em;
+    font-weight: 500;
+    color: white;
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+    font-family: var(--ui-font);
+    
+}
+
+
+
+.btn:hover,
+.btn:focus,
+.btn:focus-visible {
+    outline: none;
+    background-color: rgba(99, 176, 176, 0.775);
+}
+
+.btn:active {
+    background-color: rgba(99, 176, 176, 0.379);
+}
+.inputLabel {
+    position: absolute;
+    left: 0;
+    margin: 15px 15px;
+    font-size: .8em;
+    background-color: rgb(221, 221, 221);
+    transition: all .3s;
+
+}
+.formInput .textInput:focus,
+.formInput .textInput:valid {
+    border: 1px solid rgb(99, 176, 176);
+}
+.formInput .textInput:focus ~ label,
+.formInput .textInput:valid ~ label {
+    font-size: .7em;
+    transform: translateY(-1.2em);
+    color: rgb(99, 176, 176);
+}

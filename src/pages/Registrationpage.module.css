@@ -1,0 +1,26 @@
+.registrationCard {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(221, 221, 221);
+    width: max-content;
+    padding: 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.registrationHeader {
+    background-color: rgb(99, 176, 176);
+    font-weight: 500;
+    padding: 10px;
+    text-align: center;    
+}
+
+.registrationForm {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    padding: 0 15px 15px 15px;
+    gap: 10px;
+}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL } from "./settings";
 
-export const taskService = axios.create({ baseURL: API_URL + "api/v1" });
+export const taskService = axios.create({ baseURL: API_URL + "api/v1"});
 
 taskService.interceptors.response.use(
   (res) => res,
@@ -58,6 +58,7 @@ export const addComment = async (taskId, commentBody, answerTo = null) => {
   const response = await taskService.post(
     `tasks/${taskId}/comments/`,
     {
+      task: taskId,
       body: commentBody,
       answer_to: answerTo,
     },
@@ -71,7 +72,19 @@ export const addComment = async (taskId, commentBody, answerTo = null) => {
 
 export const getWorkgroupList = async () => {
   const token = getTokenOrExseption();
-  const response = await taskService.get("workgroups", {
+  const response = await taskService.get("workgroups/", {
+    headers: { Authorization: `token ${token}` },
+  });
+  return response.data;
+};
+
+export const createWorkgroup = async (name) => {
+  const token = getTokenOrExseption();
+  const response = await taskService.post("workgroups/", 
+  {
+    name
+  },
+  {
     headers: { Authorization: `token ${token}` },
   });
   return response.data;

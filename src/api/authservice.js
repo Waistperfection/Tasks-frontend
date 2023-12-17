@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL } from "./settings";
 
-export const authService = axios.create({ baseURL: API_URL + "auth/" });
+export const authService = axios.create({ baseURL: API_URL + "api/v1/auth/" });
 
 authService.interceptors.response.use(
   (response) => {
