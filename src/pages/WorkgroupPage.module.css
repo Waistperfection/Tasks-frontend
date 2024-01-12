@@ -1,5 +1,12 @@
-.workgroupWrapper{
+.workgroupWrapper {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 450px;
+}
+
+@media (max-width: 480px) {
+    .workgroupWrapper {
+        width: 100%;
+    }
 }

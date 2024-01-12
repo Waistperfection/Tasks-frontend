@@ -1,0 +1,107 @@
+.multiSelect {
+    position: relative;
+    font-family: var(--ui-font);
+    font-weight: 500;
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    min-width: 300px;
+    border: 1px solid black;
+    border-radius: 4px;
+    /* padding: 5px; */
+    /* box-sizing: border-box; */
+    font-size: 1rem;
+}
+
+.multiSelect:focus {
+    border: 1px solid rgb(99, 176, 176);
+}
+
+.label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    transition: all .5s;
+}
+.multiSelect:focus .label {
+    padding: 5px;
+    top: -20px;
+    left: 10px;
+    background-color: white;
+    font-size: .8em;
+
+}
+
+.controls {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px;
+    display: flex;
+    justify-self: end;
+}
+
+.delBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: rosybrown;
+    border-radius: 50%;
+}
+
+.dropdownArrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: lightgreen;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+
+}
+
+.droppedItems {
+    margin-top: 10px;
+    color: white;
+    background-color: rgb(99, 176, 176);
+    /* check this!!!! */
+    transition: all 0.3s linear;
+    position: absolute;
+    width: calc(100% + 2px);
+    left: 0;
+    top: 100%;
+    list-style: none;
+    transform-origin: top center;
+    /* border: 1px solid black !important; */
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    overflow: hidden;
+}
+
+.dropItem {
+    font-weight: 300;
+    margin-block: -1px;
+    padding: 6px 15px;
+    border-bottom: 1px solid #ffffff79;
+}
+
+.dropItem:last-child {
+    border: 0;
+}
+
+.dropItem:hover {
+    background-color: rgb(118, 204, 204);
+}
+
+.hidden {
+    transform: scaleY(0);
+}

@@ -1,11 +1,11 @@
-.authContent {
+.registrationContent {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-inline: 10px;
 }
 
-.authCard {
+.registrationCard {
     margin: 64px 0 0 0;
     max-width: 444px;
     width: 100%;
@@ -21,35 +21,32 @@
 
 }
 
-.authHeader {
+.registrationHeader {
     background-color: rgb(99, 176, 176);
     font-weight: 500;
     padding: 10px;
     text-align: center;
-    font-size: 1rem;
     font-weight: 500;
     text-transform: uppercase;
     color: white;
-
 }
 
-.authForm {
+.registrationForm {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     /* justify-content: space-evenly; */
     padding: 0 15px 15px 15px;
     gap: 10px;
 }
-
-.authForm a {
+ 
+.registrationForm a {
     font-size: .8em;
     text-decoration: none;
     color: rgb(80, 142, 142);
     cursor: pointer;
 }
 
-.authForm a:hover {
+.registrationForm a:hover {
     color: rgb(99, 176, 176);
 }

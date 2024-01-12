@@ -27,17 +27,19 @@ function Taskdetailpage() {
             <p>{task.content}</p>
           </div>
           <div className={cls.workersContainer}>
-            <h3>workers</h3>
+            <h3 className={cls.workersHeader}>workers</h3>
+            <div className={cls.workersMiniCards}>
             {task.workers?.map((worker) => (
               <>
                 <div>
                   <div className={cls.worker}>
                     <div className={cls.workerImg}></div>
-                    <h4 className={cls.workerName}>{worker.username}</h4>
+                    <span className={cls.workerName}>{worker.username}</span>
                   </div>
                 </div>
               </>
             ))}
+            </div>
           </div>
           <div className={cls.commentsContainer}>
             <h3>comments</h3>

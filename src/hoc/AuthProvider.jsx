@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
       .then(() => callback());
   };
 
-  const value = { user, signIn, signOut, is_master };
+  const value = { user, signIn, signOut, is_master,};
 
   return (
     <>

@@ -4,14 +4,19 @@
     overflow: hidden;
     height: calc(100%);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    max-height: 500px;
-    transition: max-height 2s ease-in-out;
-    max-height: min-content;
+    /* height: 500px; */
+    transition: all 2s ease-in-out;
+    /* max-height: min-content; */
 }
 
-.cropBtn{
-    width: 15px;
-    height: 15px;
+.cropped {
+    max-height: 29px;
+    /* transition: all 3s; */
+}
+
+.cropBtn {
+    width: 1em;
+    height: 1em;
     background-color: #fff;
     border-radius: 50%;
     cursor: pointer;
@@ -20,7 +25,7 @@
 .formHeaderContainer {
     font-weight: 500;
     padding: 5px 10px 5px 10px;
-    font-size: .8rem;
+    font-size: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,9 +39,4 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 5px;
-}
-
-.cropped {
-    max-height: 25px;
-    transition: all .3s;
 }

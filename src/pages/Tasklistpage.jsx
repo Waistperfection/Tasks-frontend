@@ -17,7 +17,7 @@ function Tasklistpage() {
   }, []);
   
   const representTasks = useMemo(() => {
-    return [...tasks].sort(task => task.workgroup_id)
+    return [...tasks].sort(task => task.workgroup)
   }, [tasks])
   console.log(representTasks)
 
@@ -41,7 +41,7 @@ function Tasklistpage() {
             arr[indx - 1].workgroup_name !== task.workgroup_name ? (
               <Groupheader
                 workgroup_name={task.workgroup_name}
-                workgroup_id={task.workgroup_id}
+                workgroup_id={task.workgroup}
                 clickHandler={scrollHandler}
               />
             ) : (

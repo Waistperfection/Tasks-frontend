@@ -4,7 +4,7 @@ import {BtnTextInput} from "../TextInput/TextInput";
 
 function AddWorkgroupForm({addFunction}) {
     // const [crop, setCrop] = useState(true);
-    const [crop, setCrop] = useState(false);
+    const [crop, setCrop] = useState(true);
 
     const cardClasses = crop ? [cls.formCard, cls.cropped].join(" ") : cls.formCard
   return (

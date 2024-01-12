@@ -11,10 +11,16 @@ authService.interceptors.response.use(
     if (error.response.status === 401) {
       console.log("unauthorized");
       localStorage.removeItem("token");
-      return false;
+      return error;
     } else if (error.response.status === 400) {
-      console.dir(error.response);
-      return false;
+      // console.dir(error.response);
+      // const errData = [];
+      // for (const key in error.response.data) {
+      //   errData.push(error.response.data[key]);
+      // }
+      // console.log(errData.join("\n"));
+      console.log("400 error")
+      throw error;
     }
     return error;
   }
@@ -58,7 +64,8 @@ export const serviceRegistration = async (username, password) => {
     .post("users/", { username: username, password: password })
     .then(() => (output = true))
     .catch((e) => {
-      console.dir(e);
+      // console.dir(e);
+      throw e;
       output = false;
     });
   // await serviceMe();

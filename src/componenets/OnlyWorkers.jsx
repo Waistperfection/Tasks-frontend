@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../hoc/AuthProvider";
 
-function OnlyAuthenticated({ children }) {
+function OnlyWorkers({ children }) {
   const { user } = useContext(AuthContext);
-  return <>{user? children : <></>}</>;
+  return <>{(user && !user.is_master) ? children : <></>}</>;
 }
 
-export default OnlyAuthenticated;
+export default OnlyWorkers;

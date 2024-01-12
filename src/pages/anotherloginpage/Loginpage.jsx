@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import { AuthContext } from "../../hoc/AuthProvider";
 import { TextInput } from "../../componenets/TextInput/TextInput";
 import cls from "./Loginpage.module.css";
@@ -46,6 +46,9 @@ function AnotherLoginpage() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button>Авторизация</Button>
+          <div className={cls.navigateLinks}>
+            <NavLink to={"registration/"}>Зарегистрироваться</NavLink>
+          </div>
         </form>
       </div>
     </div>

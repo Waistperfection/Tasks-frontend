@@ -6,7 +6,7 @@ import WorkgroupCard from "../componenets/WorkgroupCard/WorkgroupCard";
 import OnlyMaster from "../componenets/OnlyMaster";
 import AddWorkgroupForm from "../componenets/AddWorkgroupForm/AddWorkgroupForm";
 
-function WorkgroupPage() {
+function WorkgroupPage({join=false}) {
   const user = useContext(AuthContext);
   const [workgroups, setWorkgroups] = useState([]);
   useEffect(() => {
@@ -23,11 +23,11 @@ function WorkgroupPage() {
   return (
     <>
       <div className={cls.workgroupWrapper}>
-        {/* <OnlyMaster> */}
-        <AddWorkgroupForm addFunction={submitHandler} />
-        {/* </OnlyMaster> */}
+        <OnlyMaster>
+          <AddWorkgroupForm addFunction={submitHandler} />
+        </OnlyMaster>
         {workgroups.map((workgroup) => (
-          <WorkgroupCard workgroup={workgroup} />
+          <WorkgroupCard workgroup={workgroup} join={join}/>
         ))}
       </div>
     </>

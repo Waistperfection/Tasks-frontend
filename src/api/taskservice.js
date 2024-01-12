@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL } from "./settings";
 
-export const taskService = axios.create({ baseURL: API_URL + "api/v1"});
+export const taskService = axios.create({ baseURL: API_URL + "api/v1" });
 
 taskService.interceptors.response.use(
   (res) => res,
@@ -9,7 +9,10 @@ taskService.interceptors.response.use(
     console.log(error);
     if (axios.isAxiosError(error)) {
       console.log(error.response, error.response?.status);
-      switch (error.response.status) {
+      switch (error.response?.status) {
+        case 400:
+          alert("Запрос выполнен некорректно, повторите еще раз");
+          break;
         case 401:
           alert("Проблемы с авторизацией, перелогинтесь");
           break;
@@ -78,15 +81,29 @@ export const getWorkgroupList = async () => {
   return response.data;
 };
 
-export const createWorkgroup = async (name) => {
+export const getWorkgroupDateil = async (id) => {
   const token = getTokenOrExseption();
-  const response = await taskService.post("workgroups/", 
-  {
-    name
-  },
-  {
+  const response = await taskService.get(`workgroups/${id}/`, {
     headers: { Authorization: `token ${token}` },
   });
+  return response.data;
+};
+
+export const joinWorkgroup = async (id) => {
+  const token = getTokenOrExseption();
+  const response = await taskService.post(`workgroups/${id}/join/`);
+};
+export const createWorkgroup = async (name) => {
+  const token = getTokenOrExseption();
+  const response = await taskService.post(
+    "workgroups/",
+    {
+      name,
+    },
+    {
+      headers: { Authorization: `token ${token}` },
+    }
+  );
   return response.data;
 };
 
@@ -96,4 +113,30 @@ export const createNewTask = async (task) => {
     headers: { Authorization: `token ${token}` },
   });
   return response.data;
+};
+
+export const getFreeWorkers = async () => {
+  const token = getTokenOrExseption();
+  const response = await taskService.get("free-workers/", {
+    headers: { Authorization: `token ${token}` },
+  });
+  return response.data;
+};
+
+export const getInvites = async () => {
+  const token = getTokenOrExseption();
+  const response = await taskService.get("invites/", {
+    headers: { Authorization: `token ${token}` },
+  });
+  return response.data;
+};
+
+export const deleteInvite = async (id) => {
+  const token = getTokenOrExseption();
+  const response = await taskService.delete(`/invites/${id}/`, {
+    headers: { Authorization: `token ${token}` },
+  });
+  console.dir(response);
+  console.log(typeof response.status);
+  return response.status == 204;
 };
