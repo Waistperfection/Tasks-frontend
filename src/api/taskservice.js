@@ -97,12 +97,8 @@ export const createWorkgroup = async (name) => {
   const token = getTokenOrExseption();
   const response = await taskService.post(
     "workgroups/",
-    {
-      name,
-    },
-    {
-      headers: { Authorization: `token ${token}` },
-    }
+    { name },
+    { headers: { Authorization: `token ${token}` } }
   );
   return response.data;
 };
@@ -139,4 +135,21 @@ export const deleteInvite = async (id) => {
   console.dir(response);
   console.log(typeof response.status);
   return response.status == 204;
+};
+
+export const createNewInvite = async (invite) => {
+  const token = getTokenOrExseption();
+  const response = await taskService.post(
+    "/invites/",
+    { ...invite },
+    { headers: { Authorization: `token ${token}` } }
+  );
+  return response.data;
+};
+export const acceptInvite = async (code) => {
+  const token = getTokenOrExseption();
+  const response = await taskService.get(`invites/${code}/accept/`, {
+    headers: { Authorization: `token ${token}` },
+  });
+  return response.data;
 };

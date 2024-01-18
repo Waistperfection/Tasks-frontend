@@ -2,19 +2,25 @@ import { createContext, useMemo, useState } from "react";
 import { serviceLogin, serviceLogout, serviceMe } from "../api/authservice";
 export const AuthContext = createContext(null);
 
+const fetchUserData = () => {
+  const token = localStorage.getItem("token");
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  let user;
+  // if (token && currentUser) {
+  //   user = currentUser;
+  // } else 
+  if (token) {
+    user = serviceMe().then((res) => res);
+  } else {
+    user = null;
+  }
+  return user;
+};
+
 export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(() => {
-    const token = localStorage.getItem("token");
-    const currentUser = JSON.parse(localStorage.getItem("user"));
-    if (token && currentUser) {
-      return currentUser;
-    } else if (token) {
-      return serviceMe().then((res) => res);
-    } else {
-      return null;
-    }
-  });
+  const [user, setUser] = useState(fetchUserData());
+
   const is_master = useMemo(() => (user ? user.is_master : false), [user]);
 
   const signIn = async (username, password, callback = () => {}) => {
@@ -29,8 +35,13 @@ export const AuthProvider = ({ children }) => {
       .then(() => callback());
   };
 
-  const value = { user, signIn, signOut, is_master,};
+  const refetchUser = async () => {
+    const refreshedUser = await serviceMe();
+    setUser(refreshedUser);
+  };
 
+  const value = { user, signIn, signOut, is_master, refetchUser };
+  console.log(user)
   return (
     <>
       {loading ? (

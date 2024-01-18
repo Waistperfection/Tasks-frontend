@@ -39,7 +39,10 @@ function NavBar() {
             <NavLink to={"task/"}>Tasks</NavLink>
             </>
             :
+            <>
             <NavLink to={"/join/"}>Join</NavLink>
+            <NavLink to={"/incoming-invites/"}>Invites</NavLink>
+            </>
           }
           </OnlyWorkers>          
         </div>

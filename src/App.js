@@ -16,6 +16,7 @@ import AnotherRegistrationpage from "./pages/anotherloginpage/Registrationpage";
 import MultiSelectpage from "./pages/anotherloginpage/MultiSelectpage";
 import WorkgroupDetailPage from "./pages/WorkgroupDetailPage";
 import InvitesPage from "./pages/InvitesPage";
+import IncomingInvitesPage from "./pages/IncomingInvitesPage";
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
             <Route path="workgroups/:id/" element={<WorkgroupDetailPage />} />
             <Route path="workgroups/" element={<WorkgroupPage />} />
             <Route path="invites/" element={<InvitesPage />} />
-
+            <Route path="incoming-invites/" element={<IncomingInvitesPage />} />
           </Route>
           {/* 404 hand */}
           <Route path="*" element={<NotFoundpage />} />

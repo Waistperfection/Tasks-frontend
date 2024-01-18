@@ -8,6 +8,7 @@ function WorkgroupCard({ workgroup, join = false }) {
     <div className={cls.workgroupCard}>
       <div className={cls.workgroupHeaderContainer}>{workgroup.name}</div>
       <div className={cls.contentContainer}>
+        <p>Мастер - {workgroup.owner?.username}</p>
         <ul>
           {workgroup.workers.length || <h3>No workers yet</h3>}
           {workgroup.workers?.map((worker) => (
