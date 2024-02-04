@@ -1,8 +1,9 @@
 import cls from "./Button.module.css"
 
-function Button({ children, ...props}) {
+function Button({ children, className='', ...props}) {
+  const classes = [cls.btn, className].join(' ');
   return (
-    <button className={cls.btn} {...props}>{children}</button>
+    <button className={classes} {...props}>{children}</button>
   )
 }
 

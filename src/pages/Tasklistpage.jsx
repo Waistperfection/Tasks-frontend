@@ -5,6 +5,7 @@ import TaskCard from "../componenets/TaskCard/TaskCard";
 import AddTaskPage from "./AddTaskPage";
 import cls from "./Tasklistpage.module.css";
 import OnlyMaster from "../componenets/OnlyMaster";
+import PageHeader from "../componenets/PageHeader/PageHeader"
 
 function Tasklistpage() {
   const [tasks, setTasks] = useState([{}]);
@@ -33,7 +34,7 @@ function Tasklistpage() {
   return (
     <>
     <div className={cls.taskListContainer}>
-      <h3>Tasklistpage</h3>
+      <PageHeader>Список текущих задач</PageHeader>
       <div className={cls.taskListWrapper}>
         {tasks.map((task, indx, arr) => (
           <>

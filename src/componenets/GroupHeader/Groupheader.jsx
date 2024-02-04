@@ -5,7 +5,7 @@ import OnlyMaster from "../OnlyMaster";
 function Groupheader({ workgroup_name, workgroup_id, clickHandler }) {
   return (
     <div className={cls.groupheader}>
-      <h3>{workgroup_name}</h3>
+      <span>{workgroup_name}</span>
       <OnlyMaster>
         <div
           className={cls.addbutton}

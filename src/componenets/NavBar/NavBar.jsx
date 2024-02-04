@@ -15,7 +15,7 @@ function NavBar() {
         <div className={cls.navbarMenu}>
           {user ? (
             <>
-            <NavLink onClick={() => signOut()}>Logout</NavLink>
+            <NavLink to={"/"} onClick={() => signOut()}>Logout</NavLink>
             {/* <NavLink>{user.username}</NavLink> */}
             </>
           ) : (

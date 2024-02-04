@@ -2,6 +2,7 @@
   background-color: rgb(221, 221, 221);
   border-radius: 5px;
   overflow: hidden;
+  color: var(--text-color);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -11,15 +12,17 @@
   justify-content: space-between;
   align-items: center;
   background-color: rgb(99, 176, 176);
-
 }
 
 .header {
-  font-size: 1.3em;
+  font-size: 1.5em;
+  color: #fff;
+  font-weight: 400;
   padding-inline-end: 5px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;  
+  text-overflow: ellipsis;
+
 }
 
 .headerButton {
@@ -47,6 +50,11 @@
   align-items: flex-start;
 }
 
+.contentHeader {
+  font-size: 1.3em;
+  font-weight: 400;
+}
+
 .content {
   display: block;
   width: calc(100%);
@@ -57,9 +65,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0 10px;
-  border-top: solid rgb(99, 176, 176);
-  border-bottom: solid rgb(99, 176, 176);
+  padding: 15px 10px;
+  border-top: solid rgb(99, 176, 176) 2px;
+  border-bottom: solid rgb(99, 176, 176) 2px;
   min-width: 100%;
   height: 40px;
 }
@@ -68,7 +76,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 2px solid var(--text-color);
   background-color: #4a7f91;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   margin-left: -10px;
@@ -92,15 +100,11 @@
   padding: 5px 10px 10px 10px;
 }
 
-.btn:visited, .btn:hover, .btn:active, .btn:focus {
-  color: initial !important;
-  text-decoration: none !important;
-  outline: none !important;
-}
-
 .btn {
-  background-color: rgb(141, 215, 141);
-  color: black;
+  /* background-color: rgb(141, 215, 141); */
+  background-color: inherit;
+  border: solid 1.5px var(--ui-bluegreen);
+  color: var(--text-color);
   text-decoration: none !important;
   height: 30px;
   display: flex;
@@ -108,4 +112,13 @@
   padding: 0 10px;
   border-radius: 5px;
 
+}
+
+.btn:visited,
+.btn:hover,
+.btn:active,
+.btn:focus {
+  color: var(--text-color);
+  text-decoration: none !important;
+  outline: none !important;
 }

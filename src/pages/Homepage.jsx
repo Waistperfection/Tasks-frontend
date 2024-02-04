@@ -1,11 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PageHeader from '../componenets/PageHeader/PageHeader'
 
 function Homepage() {
   return (
     <>
-    <Link to={'login/'}><button>Login</button></Link>
-    <h2>It is homepage of my project orimitaskmanager</h2>
+    <div>
+    <PageHeader>It is homepage</PageHeader>
+    <PageHeader>of my project</PageHeader>
+    <PageHeader>orimi task manager</PageHeader>
+    </div>
     </>
   )
 }

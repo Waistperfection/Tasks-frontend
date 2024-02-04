@@ -1,0 +1,22 @@
+.inviteFormContainer {
+    background: pink;
+    width: 350px;
+    padding: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 5px;
+}
+
+.selectForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.submitButton {
+    grid-column: 1/-1;
+    margin: auto;
+    width: 200px;
+}

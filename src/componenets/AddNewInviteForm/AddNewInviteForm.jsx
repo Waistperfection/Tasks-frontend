@@ -4,6 +4,7 @@ import {
   getFreeWorkers,
   getWorkgroupList,
 } from "../../api/taskservice";
+import Button from "../Button/Button"
 
 import cls from "./AddNewInviteForm.module.css";
 
@@ -25,38 +26,55 @@ function AddNewInviteForm() {
   const handleForm = (e) => {
     e.preventDefault();
     setLoading(true);
-    createNewInvite({ user: userId, workgroup: groupId }).then(()=>setLoading(false)).catch(()=>setLoading(false));
-
+    createNewInvite({ user: userId, workgroup: groupId })
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
   };
 
   return (
-    <div style={{ background: "rgb(200, 200,200)", padding: "20px" }}>
+    <div className={cls.inviteFormContainer}>
       <h4>AddNewInviteForm</h4>
-      {loading ? (
-        <div className={cls.loading}>loading</div>
-      ) : (
-        <form id="selectForm" onSubmit={handleForm}>
-          <label htmlFor="users">users</label>
-          <select name="users" id="userSelector" value={userId} onChange={e=>setUserId(+e.target.value)}>
-            <option value={0} selected dasabled hidden>
-              select your user
-            </option>
-            {workers.map((worker) => (
-              <option value={worker.id}>{worker.username}</option>
-            ))}
-          </select>
-          <label htmlFor="users">users</label>
-          <select name="workgroup" id="workgroupSelector" value={groupId} onChange={e=>setGroupId(+e.target.value)}>
-            <option value={0} selected dasabled hidden>
-              select workgroup
-            </option>
-            {groups.map((group) => (
-              <option value={group.id}>{group.name}</option>
-            ))}
-          </select>
-          <button>submit</button>
-        </form>
-      )}
+      <div>
+        {loading ? (
+          <div className={cls.loading}>loading</div>
+        ) : (
+          <form id="selectForm" className={cls.selectForm} onSubmit={handleForm}>
+            <div>
+              <label htmlFor="users">users</label>
+              <select
+                name="users"
+                id="userSelector"
+                value={userId}
+                onChange={(e) => setUserId(+e.target.value)}
+              >
+                <option value={0} selected dasabled hidden>
+                  select your user
+                </option>
+                {workers.map((worker) => (
+                  <option value={worker.id}>{worker.username}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="users">users</label>
+              <select
+                name="workgroup"
+                id="workgroupSelector"
+                value={groupId}
+                onChange={(e) => setGroupId(+e.target.value)}
+              >
+                <option value={0} selected dasabled hidden>
+                  select workgroup
+                </option>
+                {groups.map((group) => (
+                  <option value={group.id}>{group.name}</option>
+                ))}
+              </select>
+            </div>
+            <Button className={cls.submitButton}>submit</Button>
+          </form>
+        )}
+      </div>
     </div>
   );
 }

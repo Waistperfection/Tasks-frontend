@@ -9,12 +9,12 @@ function TaskCard({ task }) {
     <>
       <div className={cls.task}>
         <div className={cls.headerContainer}>
-          <h3 className={cls.header}>{task.title}</h3>
+          <p className={cls.header}>{task.title}</p>
           <div className={cls.headerButton} />
         </div>
         <div className={cls.dateCreated}>добавлена: {date.toLocaleDateString()}</div>
         <div className={cls.contentContainer}>
-          <h4>Подробнее:</h4>
+          <h4 className={cls.contentHeader}>Подробнее:</h4>
           <p className={cls.content}>{task.content}</p>
         </div>
         <div className={cls.workersContainer}>
